@@ -13,4 +13,10 @@ describe('Testes da função HandlerElephants', () => {
   test('Testa se quando passado o parâmetro averageAge, o valor retornado é 10.5', () => {
     expect(handlerElephants('averageAge')).toBe(10.5);
   });
+  test('Testa se quando passado o parâmetro location, o valor retornado é NW', () => {
+    expect(handlerElephants('location')).toBe('NW');
+  });
+  test('Testa se quando não passado parametro, o valor retornado é undefined', () => {
+    expect(handlerElephants()).toBeUndefined();
+  });
 });
