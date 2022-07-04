@@ -22,7 +22,16 @@ describe('Testes da função getOpeningHours', () => {
   test('Testa se quando passado a função com parametro onde o zoologico está fechado, o valor retornado é The zoo is closed', () => {
     expect(getOpeningHours('Thursday', '09:25-PM')).toEqual('The zoo is closed');
   });
-  // test('Testa se quando passado a função com parametro de data errada, o valor retornado é um erro', () => {
-  //   expect(getOpeningHours('Thursday', '08:65-PM')).toThrow('The minutes must be between 0 and 59');
-  // });
+  test('Testa se quando passado a função com parametro de minutos errados, o valor retornado é um erro', () => {
+    expect(() => getOpeningHours('Thursday', '08:65-PM')).toThrow('The minutes must be between 0 and 59');
+  });
+  test('Testa se quando passado a função com parametro de hora errado, o valor retornado é um erro', () => {
+    expect(() => getOpeningHours('Thursday', '05:47-GM')).toThrow('The abbreviation must be \'AM\' or \'PM\'');
+  });
+  test('Testa se quando passado a função com parametro de dia da semana errado, o valor retornado é um erro', () => {
+    expect(() => getOpeningHours('Thursd2y', '08:22-PM')).toThrow('The day must be valid. Example: Monday');
+  });
+  test('Testa se quando passado a função com parametro de minutos errado (com letra), o valor retornado é um erro', () => {
+    expect(() => getOpeningHours('Thursday', '08:k2-AM')).toThrow('The minutes should represent a number');
+  });
 });
