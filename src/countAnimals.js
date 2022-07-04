@@ -1,7 +1,9 @@
+const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
-  // seu código aqui
+  return species.filter((e) => animal.specie === e.specie || animal.sex === e.residents.sex);
 }
 
 module.exports = countAnimals;
+// está dando erro
