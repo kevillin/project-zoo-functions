@@ -19,4 +19,10 @@ describe('Testes da função HandlerElephants', () => {
   test('Testa se quando não passado parametro, o valor retornado é undefined', () => {
     expect(handlerElephants()).toBeUndefined();
   });
+  test('Testa se quando não passado uma string, o valor retornado é undefined', () => {
+    expect(handlerElephants([4, 6])).toEqual('Parâmetro inválido, é necessário uma string');
+  });
+  test('Testa se quando não passado parametro certo, o valor retornado é null', () => {
+    expect(handlerElephants('Xablau')).toBeNull();
+  });
 });

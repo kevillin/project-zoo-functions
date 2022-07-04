@@ -38,6 +38,7 @@ const validateDay = (day) => {
 };
 
 const empty = (one, two) => !one && !two;
+// console.log(empty());
 
 const openOrClosed = (period, hour, open, close) =>
   (period === 'AM' && hour >= open) || (period === 'PM' && hour < close);

@@ -15,8 +15,6 @@ describe('Testes da função getOpeningHours', () => {
   });
   test('Testa se quando passado a função com parametro onde o zoologico está aberto, o valor retornado é The zoo is open', () => {
     expect(getOpeningHours('Saturday', '08:25-AM')).toEqual('The zoo is open');
-  });
-  test('Testa se quando passado a função com parametro onde o zoologico está aberto, o valor retornado é The zoo is open', () => {
     expect(getOpeningHours('Thursday', '04:25-PM')).toEqual('The zoo is open');
   });
   test('Testa se quando passado a função com parametro onde o zoologico está fechado, o valor retornado é The zoo is closed', () => {
@@ -26,12 +24,21 @@ describe('Testes da função getOpeningHours', () => {
     expect(() => getOpeningHours('Thursday', '08:65-PM')).toThrow('The minutes must be between 0 and 59');
   });
   test('Testa se quando passado a função com parametro de hora errado, o valor retornado é um erro', () => {
-    expect(() => getOpeningHours('Thursday', '05:47-GM')).toThrow('The abbreviation must be \'AM\' or \'PM\'');
+    expect(() => getOpeningHours('Thursday', '05:47-GM')).toThrowError('The abbreviation must be \'AM\' or \'PM\'');
   });
   test('Testa se quando passado a função com parametro de dia da semana errado, o valor retornado é um erro', () => {
     expect(() => getOpeningHours('Thursd2y', '08:22-PM')).toThrow('The day must be valid. Example: Monday');
   });
-  test('Testa se quando passado a função com parametro de minutos errado (com letra), o valor retornado é um erro', () => {
+  test('Testa se quando passado a função com parametro de minutos errado, o valor retornado é um erro', () => {
     expect(() => getOpeningHours('Thursday', '08:k2-AM')).toThrow('The minutes should represent a number');
+  });
+  test('Testa se quando passado a função com parametro de horas errado (com letra), o valor retornado é um erro', () => {
+    expect(() => getOpeningHours('Thursday', '0Ç:42-AM')).toThrow('The hour should represent a number');
+  });
+  test('Testa se quando passado a função com parametro de horas errado, o valor retornado é um erro', () => {
+    expect(() => getOpeningHours('Thursday', '15:42-AM')).toThrow('The hour must be between 0 and 12');
+  });
+  test('Testa se quando passado a função com parametro de um horário em monday, o valor retornado é The zoo is closed', () => {
+    expect(getOpeningHours('Monday', '8:00-PM')).toEqual('The zoo is closed');
   });
 });
