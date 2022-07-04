@@ -10,3 +10,4 @@ function getAnimalsOlderThan(animal, age) {
 module.exports = getAnimalsOlderThan;
 // variavel 'e' de elemento
 // variavel 'a' de animal
+// Exercicio feito
