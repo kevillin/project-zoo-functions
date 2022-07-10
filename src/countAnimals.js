@@ -2,8 +2,19 @@ const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
-  return species.filter((e) => animal.specie === e.specie || animal.sex === e.residents.sex);
+  const numeroAnimais = {};
+  species.forEach((a) => {
+    numeroAnimais[a.name] = a.residents.length;
+  });
+
+  if (animal === undefined) return numeroAnimais;
+  if (animal.sex === undefined) return numeroAnimais[animal.specie];
+
+  const retornaAnimal = species.find((animals) => animals.name === animal.specie);
+  const confereSexo = retornaAnimal.residents.filter((sexo) => sexo.sex === animal.sex);
+
+  return confereSexo.length;
 }
 
 module.exports = countAnimals;
-// está dando erro
+// a de animal
