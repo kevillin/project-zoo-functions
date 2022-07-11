@@ -15,10 +15,7 @@ function confereFunc({ name, id }) {
     locations: animais.map((especie) => especie.location),
   };
 }
-
-function retornaTodos() {
-  return employees.map((employee) => confereFunc({ id: employee.id }));
-}
+const retornaTodos = () => employees.map((employee) => confereFunc({ id: employee.id }));
 
 function getEmployeesCoverage(objeto) {
   if (objeto === undefined) return retornaTodos();
